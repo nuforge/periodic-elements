@@ -17,6 +17,7 @@ import {
   VMain,
   VResponsive,
   VNavigationDrawer,
+  VBtn,
   VCard,
   VCardTitle,
   VCardText,
@@ -29,6 +30,9 @@ import {
   VListItemTitle,
   VListItemSubtitle,
   VFooter,
+  VBtnToggle,
+  VItem,
+  VItemGroup,
 } from 'vuetify/components'
 
 const app = createApp(App)
@@ -90,6 +94,8 @@ const vuetify = createVuetify({
     VMain,
     VResponsive,
     VNavigationDrawer,
+    VBtn,
+    VBtnToggle,
     VCard,
     VCardTitle,
     VCardText,
@@ -104,6 +110,8 @@ const vuetify = createVuetify({
     VListItemTitle,
     VListItemSubtitle,
     VFooter,
+    VItem,
+    VItemGroup,
   },
 })
 

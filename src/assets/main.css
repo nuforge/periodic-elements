@@ -6,3 +6,9 @@
   padding: 2rem;
   font-weight: normal;
 }
+
+a,
+a:visited {
+  color: var(--color-primary);
+  text-decoration: none;
+}
