@@ -1,14 +1,21 @@
 <template>
-  <v-btn-toggle class="flex-wrap h-auto ga-1 " v-model="elements.selected" multiple>
-    <v-btn variant="outlined" icon v-for="element in elements.elements" :key="element.symbol" :value="element.symbol"
-      :color="element['cpk-hex'] ? `#${element['cpk-hex']}` : 'surface'" :text="`${element.symbol}`" />
-  </v-btn-toggle>
+  <v-item-group v-model="elements.selected" multiple>
+    <span v-for="element in elements.elements" :key="element.symbol">
+      <v-item v-slot="{ isSelected, toggle }" :value="element.symbol">
+        <v-btn :variant="isSelected ? 'tonal' : 'text'"
+          :color="element['cpk-hex'] ? `#${element['cpk-hex']}` : 'surface'" :text="`${element.symbol}`"
+          @click="toggle" />
+      </v-item>
+    </span>
+  </v-item-group>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useElementStore } from '@/stores/elements';
 
 const elements = useElementStore()
+const show = ref(false)
 
 
 </script>
