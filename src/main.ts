@@ -12,6 +12,9 @@ import { createVuetify } from 'vuetify'
 import {
   VApp,
   VContainer,
+  VAppBar,
+  VAppBarNavIcon,
+  VAppBarTitle,
   VRow,
   VCol,
   VMain,
@@ -33,6 +36,9 @@ import {
   VBtnToggle,
   VItem,
   VItemGroup,
+  VFab,
+  VToolbarTitle,
+  VSpacer,
 } from 'vuetify/components'
 
 const app = createApp(App)
@@ -90,6 +96,11 @@ const vuetify = createVuetify({
   },
   components: {
     VApp,
+    VAppBar,
+    VAppBarNavIcon,
+    VAppBarTitle,
+    VToolbarTitle,
+    VSpacer,
     VContainer,
     VMain,
     VResponsive,
@@ -112,6 +123,7 @@ const vuetify = createVuetify({
     VFooter,
     VItem,
     VItemGroup,
+    VFab,
   },
 })
 

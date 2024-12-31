@@ -1,6 +1,6 @@
 <template>
-  <v-navigation-drawer permanent v-if="elements.element">
-    <v-container>
+  <v-navigation-drawer v-model="elements.drawer">
+    <v-container v-if="elements.element">
       <ElementBox :number="elements.element.number" :isSelected="false" />
       <v-row>
         <v-col>

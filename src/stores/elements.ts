@@ -15,6 +15,7 @@ interface Element {
 export const useElementStore = defineStore('elements', () => {
   const elements = ref(elementsData.elements)
   const selected = ref<string[]>([])
+  const drawer = ref(false)
 
   const periodicTable = ref<{
     elements: Element[]
@@ -58,5 +59,5 @@ export const useElementStore = defineStore('elements', () => {
     }
   }
 
-  return { elements, element, select, selected, selectedElements, periodicTable }
+  return { drawer, elements, element, select, selected, selectedElements, periodicTable }
 })
