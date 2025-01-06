@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import ElementBox from './ElementBox.vue';
 interface ElementData {
   xpos: number;
   ypos: number;
   number: number;
+  atomic_mass: number;
   [key: string]: unknown;
 }
 
@@ -25,10 +25,19 @@ defineProps({
 </script>
 
 <template>
-  <v-container class="periodic-table" max-width="1200">
+  <v-container class="periodic-table">
     <v-btn :variant="true ? 'tonal' : 'text'" :color="element['cpk-hex'] ? `#${element['cpk-hex']}` : 'surface'"
       :text="`${element.symbol}`" v-for="element in elements" :key="element.number" class="element-cell"
-      :style="getPositionStyle(element)" />
+      :style="getPositionStyle(element)" size="x-small" stacked>
+      <template #prepend>
+        <span>{{ element.number }}</span>
+      </template>
+      <template #default>
+        <b class="text-white">{{ element.symbol }}</b>
+      </template>
+      <template #append>{{ element.atomic_mass.toPrecision(4) }}
+      </template>
+    </v-btn>
   </v-container>
 </template>
 
@@ -38,7 +47,7 @@ defineProps({
   grid-template-columns: repeat(18, 1fr);
   /* Adjust as per periodic table layout */
   /* Adjust height as needed */
-  gap: 4px;
+  gap: 1px;
   /* Space between elements */
 }
 

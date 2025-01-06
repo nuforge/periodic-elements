@@ -7,7 +7,8 @@
         <v-toolbar-title><router-link to="/">Periodic Table</router-link></v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
-      <NavigationLayout v-model="drawer" location="end" :element="elements.element" app />
+      <NavigationLayout v-model="drawer" location="end" :element="elements.element" app disable-route-watcher
+        disable-resize-watcher />
       <v-container>
         <RouterView />
       </v-container>
