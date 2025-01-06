@@ -4,11 +4,10 @@
       <v-fab icon="mdi-atom-variant" location="top end" size="small" absolute app appear
         @click="drawer = !drawer"></v-fab>
       <v-app-bar app>
-        <v-app-bar-nav-icon @click="drawer = !drawer" />
         <v-toolbar-title>Periodic Table</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
-      <NavigationLayout permanent v-model="drawer" location="end" :element="elements.element" app />
+      <NavigationLayout v-model="drawer" location="end" :element="elements.element" app />
       <v-container>
         <RouterView />
       </v-container>
