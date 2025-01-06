@@ -2,7 +2,26 @@ import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 
 import elementsData from '@/assets/table/PeriodicTableJSON.json'
-
+interface ElementData {
+  name: string
+  appearance: string | null
+  atomic_mass: number
+  boil: number | null
+  category: string
+  density: number | null
+  discovered_by: string | null
+  melt: number | null
+  molar_heat: number | null
+  named_by: string | null
+  number: number
+  period: number
+  group: number | null
+  phase: string
+  source: string
+  shells: number[]
+  block: string
+  [key: string]: any
+}
 interface Element {
   number: number
   symbol: string
@@ -59,5 +78,41 @@ export const useElementStore = defineStore('elements', () => {
     }
   }
 
-  return { drawer, elements, element, select, selected, selectedElements, periodicTable }
+  // ChatGPT - Add filter and sort functions
+  function filterElements(elements: ElementData[], criteria: Partial<ElementData>): ElementData[] {
+    return elements.filter((element) =>
+      Object.entries(criteria).every(([key, value]) => {
+        if (Array.isArray(value)) {
+          // For ranges like atomic_mass: [min, max]
+          const [min, max] = value
+          return element[key] >= min && element[key] <= max
+        }
+        return element[key] === value
+      }),
+    )
+  }
+  function sortElements(
+    elements: ElementData[],
+    key: keyof ElementData,
+    order: 'asc' | 'desc' = 'asc',
+  ): ElementData[] {
+    return [...elements].sort((a, b) => {
+      if (a[key] === null || b[key] === null) return 0
+      const valA = a[key] as number
+      const valB = b[key] as number
+      return order === 'asc' ? valA - valB : valB - valA
+    })
+  }
+
+  return {
+    drawer,
+    elements,
+    element,
+    select,
+    selected,
+    selectedElements,
+    periodicTable,
+    filterElements,
+    sortElements,
+  }
 })

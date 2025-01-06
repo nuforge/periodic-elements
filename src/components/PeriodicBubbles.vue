@@ -11,11 +11,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useElementStore } from '@/stores/elements';
 
 const elements = useElementStore()
-const show = ref(false)
 
 
 </script>

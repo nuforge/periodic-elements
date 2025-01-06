@@ -1,9 +1,9 @@
 <template>
-  <PeriodicBubbles />
-  <PeriodicTable />
+  <PeriodicFlex :elements="elements.elements" />
 </template>
 
 <script setup lang="ts">
-import PeriodicBubbles from '@/components/PeriodicBubbles.vue';
-import PeriodicTable from '@/components/PeriodicTable.vue';
+import PeriodicFlex from '@/components/PeriodicFlex.vue';
+import { useElementStore } from '@/stores/elements';
+const elements = useElementStore()
 </script>
